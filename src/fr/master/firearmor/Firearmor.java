@@ -19,12 +19,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class firearmor extends JavaPlugin implements Listener{
-	ArrayList<Player> speedeffect =new ArrayList<Player>();
-	ArrayList<Player> fireeffect =new ArrayList<Player>();
+public class Firearmor extends JavaPlugin implements Listener{
+	public static ArrayList<Player> speedeffect =new ArrayList<Player>();
+	public static ArrayList<Player> fireeffect =new ArrayList<Player>();
 	@Override
 	public boolean onCommand(org.bukkit.command.CommandSender sender, org.bukkit.command.Command command, String label
 			, String[] args) {
+		if(!(sender instanceof Player)){
+			return true;
+		}
 		Player p = (Player) sender;
 		if(label.equalsIgnoreCase("armorgui")){
 			ouverturemenu(p);
