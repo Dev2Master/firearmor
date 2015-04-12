@@ -1,0 +1,8 @@
+main: fr.master.firearmor.firearmor
+version: 0.0.1
+name: FireArmor
+commands:
+  armorgui:
+    description: armorgui
+  debug:
+    description: debug
