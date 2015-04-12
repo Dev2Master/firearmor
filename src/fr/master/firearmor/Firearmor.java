@@ -29,7 +29,7 @@ public class Firearmor extends JavaPlugin implements Listener{
 			return true;
 		}
 		Player p = (Player) sender;
-		if(label.equalsIgnoreCase("armorgui")){
+		if(label.equalsIgnoreCase("armorgui") && p.hasPermission("master.armorgui")){
 			ouverturemenu(p);
 		}
 		return false;};
@@ -43,7 +43,7 @@ public class Firearmor extends JavaPlugin implements Listener{
 		ItemMeta firearmormeta = firearmor.getItemMeta();
 		firearmormeta.setDisplayName("§c§lFire Armor");
 		List<String> firelore =new ArrayList<String>();
-		firelore.add("§b§lUne Armure unique qui envoie du feux a ce qui vous attaquent");
+		firelore.add("§b§lAn Unique armor who do your opposant fired when he hit you");
 		firearmormeta.setLore(firelore);
 		firearmor.setItemMeta(firearmormeta);
 		p.getInventory().setChestplate(firearmor);
@@ -53,7 +53,7 @@ public class Firearmor extends JavaPlugin implements Listener{
 		ItemMeta firearmormeta = firearmor.getItemMeta();
 		firearmormeta.setDisplayName("§c§lFire Armor");
 		List<String> firelore =new ArrayList<String>();
-		firelore.add("§b§lUne Armure unique qui envoie du feux a ce qui vous attaquent");
+		firelore.add("§b§lAn Unique armor who do your opposant fired when he hit you");
 		firearmormeta.setLore(firelore);
 		firearmor.setItemMeta(firearmormeta);
 		if(p.getInventory().getChestplate().isSimilar(firearmor)){
@@ -67,7 +67,7 @@ public class Firearmor extends JavaPlugin implements Listener{
 		ItemMeta firearmormeta = firearmor.getItemMeta();
 		firearmormeta.setDisplayName("§c§lFire Armor");
 		List<String> firelore =new ArrayList<String>();
-		firelore.add("§b§lUne Armure unique qui envoie du feux a ce qui vous attaquent");
+		firelore.add("§b§lAn Unique armor who do your opposant fired when he hit you");
 		firearmormeta.setLore(firelore);
 		firearmor.setItemMeta(firearmormeta);
 		ItemStack speedLeggings =new ItemStack(Material.DIAMOND_LEGGINGS);
