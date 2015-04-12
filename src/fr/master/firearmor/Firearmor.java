@@ -77,13 +77,13 @@ public class Firearmor extends JavaPlugin implements Listener{
 		lorespeed.add("§5Speed legging if you have them you gonna have morespeed");
 		speedleggingsmeta.setLore(lorespeed);
 		speedLeggings.setItemMeta(speedleggingsmeta);
-		if(e.getCurrentItem().isSimilar(speedLeggings) && e.getInventory().getName().equalsIgnoreCase("§2Spéciales Armures")){
+		if(e.getCurrentItem().isSimilar(speedLeggings) && e.getInventory().getName().equalsIgnoreCase("§2Spéciales Armors")){
 			e.setCancelled(true);
 			speedeffect(p);
 			speedleggingsset(p);
 			p.closeInventory();
 		}
-		if(e.getCurrentItem().isSimilar(firearmor) && e.getInventory().getName().equalsIgnoreCase("§2Spéciales Armures")){
+		if(e.getCurrentItem().isSimilar(firearmor) && e.getInventory().getName().equalsIgnoreCase("§2Spéciales Armors")){
 			e.setCancelled(true);
 			firearmorset(p);
 			effectfirearmor(p);
@@ -91,13 +91,13 @@ public class Firearmor extends JavaPlugin implements Listener{
 		}
 	}
 	public void ouverturemenu(Player p){
-		inv = Bukkit.createInventory(null, 9, "§2Spéciales Armures");
+		inv = Bukkit.createInventory(null, 9, "§2Spéciales Armores");
 		
 		ItemStack firearmor =new ItemStack(Material.GOLD_CHESTPLATE);
 		ItemMeta firearmormeta = firearmor.getItemMeta();
 		firearmormeta.setDisplayName("§c§lFire Armor");
 		List<String> firelore =new ArrayList<String>();
-		firelore.add("§b§lUne Armure unique qui envoie du feux a ce qui vous attaquent");
+		firelore.add("§b§lAn Unique armor who do your opposant fired when he hit you");
 		firearmormeta.setLore(firelore);
 		firearmor.setItemMeta(firearmormeta);
 		
@@ -117,12 +117,32 @@ public class Firearmor extends JavaPlugin implements Listener{
 	@EventHandler
 	public void moveevent(PlayerMoveEvent event){
 		Player p = event.getPlayer();
+		ItemStack speedLeggings =new ItemStack(Material.DIAMOND_LEGGINGS);
+		ItemMeta speedleggingsmeta = speedLeggings.getItemMeta();
+		speedleggingsmeta.setDisplayName("§6Speed Legging");
+		List<String> lorespeed =new ArrayList<String>();
+		lorespeed.add("§5Speed legging if you have them you gonna have morespeed");
+		speedleggingsmeta.setLore(lorespeed);
+		speedLeggings.setItemMeta(speedleggingsmeta);
+		ItemStack firearmor =new ItemStack(Material.GOLD_CHESTPLATE);
+		ItemMeta firearmormeta = firearmor.getItemMeta();
+		firearmormeta.setDisplayName("§c§lFire Armor");
+		List<String> firelore =new ArrayList<String>();
+		firelore.add("§b§lUne Armure unique qui envoie du feux a ce qui vous attaquent");
+		firearmormeta.setLore(firelore);
+		firearmor.setItemMeta(firearmormeta);
 		if(fireeffect.contains(p)){
 			p.playEffect(p.getLocation(), Effect.MOBSPAWNER_FLAMES, 5);
 		}
 		if(speedeffect.contains(p)){
 			p.playEffect(p.getLocation(), Effect.SMOKE, 5);
 			p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 40, 1));
+		}
+		if(!(p.getInventory().getChestplate().isSimilar(firearmor))){
+			fireeffect.remove(p);
+		}
+		if(!(p.getInventory().getLeggings().isSimilar(speedLeggings))){
+			speedeffect.remove(p);
 		}
 	}
 	@EventHandler
